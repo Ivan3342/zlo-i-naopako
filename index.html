@@ -1,166 +1,562 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zlo i Naopako — Kafe i Koktel Bar</title>
+    <title>Zlo i Naopako | Kafe i Koktel Bar Kragujevac</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-brown: #3d251e;
+            --secondary-brown: #5c3a21;
+            --cream-light: #fdfaf6;
+            --cream-dark: #f3ede2;
+            --vibrant-orange: #ff6b35;
+            --text-dark: #2b1b17;
+            --text-light: #7a6e67;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--cream-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: rgba(61, 37, 30, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--vibrant-orange);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-box img {
+            height: 60px;
+            filter: invert(1) brightness(1.5);
+        }
+
+        nav a {
+            color: var(--cream-light);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--vibrant-orange);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(43, 27, 23, 0.8), rgba(43, 27, 23, 0.8)), url('565626998_18323074471214596_159273099872721172_n.webp') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--cream-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: var(--vibrant-orange);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            color: var(--cream-dark);
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--vibrant-orange);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-brown);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--vibrant-orange);
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.6rem;
+            color: var(--secondary-brown);
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #4a3f3a;
+            font-size: 1.1rem;
+        }
+
+        .info-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .badge {
+            background-color: var(--cream-dark);
+            color: var(--primary-brown);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(92, 58, 33, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-bottom: 5px solid var(--vibrant-orange);
+        }
+
+        .menu-section {
+            background-color: var(--cream-dark);
+            padding: 80px 20px;
+            border-radius: 30px;
+            margin-bottom: 60px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .menu-category h3 {
+            font-size: 1.5rem;
+            color: var(--primary-brown);
+            border-bottom: 2px solid rgba(61, 37, 30, 0.1);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(61, 37, 30, 0.1);
+        }
+
+        .menu-item-details h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .menu-item-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .menu-item-price {
+            font-weight: 700;
+            color: var(--vibrant-orange);
+            font-size: 1.1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            height: 350px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .review-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--vibrant-orange);
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--primary-brown);
+            margin-bottom: 5px;
+        }
+
+        .stars {
+            color: #ffb100;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            color: #554a42;
+            font-style: italic;
+        }
+
+        .contact-section {
+            background-color: var(--primary-brown);
+            color: var(--cream-light);
+            border-radius: 30px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--vibrant-orange);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .working-hours {
+            margin-top: 30px;
+            background-color: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .working-hours h4 {
+            color: var(--cream-dark);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: none;
+            border-radius: 15px;
+        }
+
+        footer {
+            background-color: #2b1b17;
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .about-grid, .menu-grid, .contact-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .contact-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-    <header class="hero">
-        <div class="kicker">Bar · Kragujevac</div>
-        <h1>Zlo i Naopako</h1>
-        <div class="subtitle">Kafe i Koktel Bar</div>
-        <div class="rating-row">
-            <span class="rating-score">4.7</span>
-            <span class="stars">★★★★★</span>
-            <span class="rating-count">(125 reviews)</span>
-        </div>
-        <div class="badges">
-            <span class="badge">Open · Closes 12 AM</span>
-            <span class="badge">RSD 1–500 / person</span>
-            <span class="badge">Kerbside Pickup</span>
-            <span class="badge">Delivery</span>
+    <header>
+        <div class="header-container">
+            <div class="logo-box">
+                <img src="logo-black-transparent.webp" alt="Zlo i Naopako Logo">
+            </div>
+            <nav>
+                <a href="#o-nama">O nama</a>
+                <a href="#meni">Meni</a>
+                <a href="#galerija">Galerija</a>
+                <a href="#utisci">Utisci</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
         </div>
     </header>
 
-    <div class="wrap">
-
-        <section>
-            <h2>Visit Us</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="label">Address</div>
-                    <div class="value">Tanaska Rajića 68<br>Kragujevac 34104</div>
-                </div>
-                <div class="info-card">
-                    <div class="label">Hours Today</div>
-                    <div class="value status-open">Open · Closes 12 AM</div>
-                </div>
-                <div class="info-card">
-                    <div class="label">Price Range</div>
-                    <div class="value">RSD 1–500 per person<br><span style="color:var(--muted);font-size:12px;">reported
-                            by 28 people</span></div>
-                </div>
-                <div class="info-card">
-                    <div class="label">Phone</div>
-                    <div class="value">064 615 4894</div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Menu Highlights</h2>
-            <div class="menu-highlight">
-                <div>
-                    <div class="dish">Espresso Sa Cimetom</div>
-                    <div class="desc">Espresso with cinnamon</div>
-                </div>
-                <span class="tag">Signature</span>
-            </div>
-            <div class="menu-highlight">
-                <div>
-                    <div class="dish">Najbolja Kafa U Kraju</div>
-                    <div class="desc">"Best coffee in the neighborhood"</div>
-                </div>
-                <span class="tag">Fan Favorite</span>
-            </div>
-        </section>
-
-        <section>
-            <h2>What Guests Are Saying</h2>
-            <div class="review-summary">
-                <div class="big">4.7</div>
-                <div class="bars">
-                    <div class="bar-row"><span>5</span>
-                        <div class="bar-track">
-                            <div class="bar-fill" style="width:88%"></div>
-                        </div>
-                    </div>
-                    <div class="bar-row"><span>4</span>
-                        <div class="bar-track">
-                            <div class="bar-fill" style="width:8%"></div>
-                        </div>
-                    </div>
-                    <div class="bar-row"><span>3</span>
-                        <div class="bar-track">
-                            <div class="bar-fill" style="width:2%"></div>
-                        </div>
-                    </div>
-                    <div class="bar-row"><span>2</span>
-                        <div class="bar-track">
-                            <div class="bar-fill" style="width:1%"></div>
-                        </div>
-                    </div>
-                    <div class="bar-row"><span>1</span>
-                        <div class="bar-track">
-                            <div class="bar-fill" style="width:1%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Reviews</h2>
-
-            <div class="review">
-                <div class="review-head">
-                    <span class="reviewer">Kristina Milenović</span>
-                    <span class="review-meta">5 months ago · 2 reviews</span>
-                </div>
-                <div class="review-stars">★★★★★</div>
-                <div class="review-text">Everything was excellent – the service, the atmosphere, and the quality of the
-                    drinks. The selection of coffees and cocktails is very diverse, so everyone can find something they
-                    enjoy. I would gladly come back again. I highly recommend this bar.</div>
-                <div class="owner-reply"><b>Response from the owner:</b> Thank you ❤️</div>
-            </div>
-
-            <div class="review">
-                <div class="review-head">
-                    <span class="reviewer">ивона срећковић</span>
-                    <span class="review-meta">4 months ago · 1 review</span>
-                </div>
-                <div class="review-stars">★★★☆☆</div>
-                <div class="review-text">Came in and ordered a lemonade, at which point the waitress asked if I was 18.
-                    Nowhere on the door or in the café is an 18+ policy stated — I was told I couldn't be served and was
-                    asked to leave. This wasn't the first time it happened, and it wasn't clear why.</div>
-                <div class="scores">
-                    <span>Food <b>3</b></span>
-                    <span>Service <b>1</b></span>
-                    <span>Atmosphere <b>4</b></span>
-                </div>
-                <div class="owner-reply"><b>Response from the owner:</b> Asking whether this review is fair given the
-                    venue's 18+ house policy, and requesting clarification on where such a policy is legally required to
-                    be posted.</div>
-            </div>
-
-            <div class="review">
-                <div class="review-head">
-                    <span class="reviewer">Sanja Ristović</span>
-                    <span class="review-meta">a year ago · Local Guide · 13 reviews · 24 photos</span>
-                </div>
-                <div class="review-stars">★★★★★</div>
-                <div class="review-text">Good, friendly staff and lots of young people around. The coffee was great, and
-                    the lemonade with mint paired perfectly with it. The interior is cute, modern, and cozy — probably
-                    one of the better places in town for a quality cup of coffee.</div>
-                <div class="scores">
-                    <span>Service <b>5</b></span>
-                    <span>Atmosphere <b>5</b></span>
-                    <span>Price/person <b>RSD 500–1,000</b></span>
-                </div>
-            </div>
-
-        </section>
-
-        <footer>
-            2W85+J2 Kragujevac · Zlo i Naopako, Kafe i Koktel Bar
-        </footer>
-
+    <div class="hero">
+        <h1>Zlo i Naopako</h1>
+        <p>Jedinstven spoj vrhunske kafe i neobičnih koktela u samom srcu Kragujevca. Mesto gde tradicija ispijanja kafe dobija potpuno novu dimenziju.</p>
+        <a href="#meni" class="btn">Pogledaj Meni</a>
     </div>
-</body>
 
+    <section id="o-nama">
+        <div class="section-title">
+            <h2>O Nama</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Dobrodošli u naš kutak kreativnosti</h3>
+                <p>Smešten u ulici Tanaska Rajića br. 68 u Kragujevcu, kafe i koktel bar "Zlo i Naopako" predstavlja savršeno utočište za sve ljubitelje opuštene atmosfere, modernog enterijera i vrhunskog kvaliteta pića.</p>
+                <p>Ponosimo se našom pažljivo biranom selekcijom kafa i osvežavajućih koktela. Naš pristup gostu je potpuno jedinstven – trudimo se da svaka poseta bude posebno iskustvo, uz ljubazno osoblje koje je uvek spremno da odgovori na svaku vašu želju.</p>
+                <div class="info-badges">
+                    <span class="badge">Izuzetna kafa</span>
+                    <span class="badge">Unikatni kokteli</span>
+                    <span class="badge">Moderan stil</span>
+                    <span class="badge">Bašta na otvorenom</span>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="625219192_18112245100572587_7847014058427154450_n.webp" alt="Uživanje u baru Zlo i Naopako">
+            </div>
+        </div>
+    </section>
+
+    <section id="meni" style="max-width: 100%; background-color: var(--cream-dark); padding: 80px 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="section-title">
+                <h2>Izdvajamo iz Menija</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h3>Kafa i topli napici</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-details">
+                            <h4>Espreso sa cimetom</h4>
+                            <p>Naš prepoznatljivi topli napitak bogate arome sa finim dodirom cimeta.</p>
+                        </div>
+                        <div class="menu-item-price">180 RSD</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-details">
+                            <h4>Najbolja kafa u kraju</h4>
+                            <p>Pažljivo selektovana zrna vrhunskog kvaliteta za idealan početak dana.</p>
+                        </div>
+                        <div class="menu-item-price">170 RSD</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-details">
+                            <h4>Kapućino sa toplom penom</h4>
+                            <p>Kremasti kapućino sa savršenom teksturom i latte art dizajnom.</p>
+                        </div>
+                        <div class="menu-item-price">190 RSD</div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Kokteli i osveženja</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-details">
+                            <h4>Unikatni zanatski kokteli</h4>
+                            <p>Neobične i osvežavajuće kombinacije ukusa koje ne možete probati nigde drugde.</p>
+                        </div>
+                        <div class="menu-item-price">420 RSD</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-details">
+                            <h4>Limunada sa mentom</h4>
+                            <p>Savršen par uz vašu omiljenu kafu – osvežavajući citrusni miks sa svežom mentom.</p>
+                        </div>
+                        <div class="menu-item-price">220 RSD</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-details">
+                            <h4>Negroni sa narandžom</h4>
+                            <p>Klasični gorko-slatki koktel sa aromatičnom korom narandže za savršen završetak večeri.</p>
+                        </div>
+                        <div class="menu-item-price">450 RSD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerija">
+        <div class="section-title">
+            <h2>Galerija</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="465903011_18284501230214596_1401238326098616677_n.jpg" alt="Egzotični tiki koktel sa kafom">
+            </div>
+            <div class="gallery-item">
+                <img src="591138357_18330880387214596_7029328306488975246_n.webp" alt="Priprema kafe sa latte artom">
+            </div>
+            <div class="gallery-item">
+                <img src="605889761_18332712685214596_9201845639208706563_n.webp" alt="Roze koktel sa malinama">
+            </div>
+            <div class="gallery-item">
+                <img src="69.jpg" alt="Sveži voćni napitak i meni">
+            </div>
+            <div class="gallery-item">
+                <img src="491439758_18303200647214596_1581392481911890914_n.webp" alt="Letnji osvežavajući koktel u bašti">
+            </div>
+            <div class="gallery-item">
+                <img src="650255411_18069660719535122_2794960922065814740_n.webp" alt="Sjajna atmosfera i nasmejani gosti">
+            </div>
+            <div class="gallery-item">
+                <img src="negroni.png" alt="Klasični Negroni koktel">
+            </div>
+        </div>
+    </section>
+
+    <section id="utisci" style="background-color: rgba(92, 58, 33, 0.03); max-width: 100%; padding: 80px 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="section-title">
+                <h2>Šta kažu naši gosti</h2>
+                <p style="text-align: center; color: var(--text-light); margin-top: -30px; font-size: 1.1rem;">Prosečna ocena <strong>4.7 / 5</strong> na osnovu 125 recenzija</p>
+            </div>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <div class="reviewer-name">Kristina Milenović</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Sve je bilo odlično – usluga, atmosfera i kvalitet pića. Izbor kafa i koktela je veoma raznovrstan, tako da svako može pronaći nešto u čemu uživa. Rado bih se ponovo vratila. Toplo preporučujem ovaj bar."</p>
+                </div>
+                <div class="review-card">
+                    <div class="reviewer-name">Jasmina Arsenijević</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Vlasnik je najdivnija duša na svetu, ljubazan, pun poštovanja i predusretljiv prema uvek radoznalim pitanjima i zahtevima gostiju. Šarmantan enterijer i slatka mala bašta čine lepu i intimnu atmosferu. Meni je zanimljiv i osvežavajuće drugačiji od ostalih mesta. Idi na neobične koktele i zaljubićeš se u njih!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="reviewer-name">Sanja Ristović</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Dobro, ljubazno osoblje i mnogo mladih ljudi svuda okolo. Kafa je bila odlična, a limunada sa mentom se savršeno uklopila uz nju. Enterijer je sladak, moderan i udoban — verovatno jedno od boljih mesta u gradu za kvalitetnu šoljicu kafe."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt">
+        <div class="contact-section">
+            <div class="contact-info">
+                <h3>Posetite nas</h3>
+                <p><strong>Adresa:</strong> Tanaska Rajića 68, Kragujevac 34104</p>
+                <p><strong>Telefon:</strong> 064 6154894</p>
+                <p><strong>Cenovni rang:</strong> 1–500 RSD po osobi</p>
+                
+                <div class="working-hours">
+                    <h4>Radno Vreme</h4>
+                    <p>Otvoreno svakog dana do 00:00 (12 AM)</p>
+                </div>
+            </div>
+            <div class="map-box">
+                <!-- Static embed or styled box representing the location map -->
+                <div style="background-color: var(--cream-dark); width:100%; height:100%; min-height:300px; border-radius:15px; display:flex; flex-direction:column; justify-content:center; align-items:center; color: var(--primary-brown); padding: 20px; text-align:center; border: 2px solid var(--vibrant-orange)">
+                    <span style="font-size: 3rem; margin-bottom: 10px;">📍</span>
+                    <h4 style="margin-bottom: 10px; font-size:1.2rem;">Lokacija na mapi</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Tanaska Rajića 68, Kragujevac<br><small style="color:var(--text-light)">Kod: 2W85+J2 Kragujevac</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Zlo i Naopako kafe i koktel bar Kragujevac. Sva prava zadržana. | Ručno izrađen i moderan dizajn</p>
+    </footer>
+
+</body>
 </html>
