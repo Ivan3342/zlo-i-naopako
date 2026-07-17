@@ -12,9 +12,9 @@
         <div class="header-container">
             <div class="logo-box">
                 <!-- KORIGOVANO -->
-                <img src="images/logo-black-transparent.webp" alt="Zlo i Naopako Logo">
+                <img src="images/logo-black-transparent.webp" alt="Zlo i Naopako Logo" id="logoButton">
             </div>
-            <nav>
+            <nav id="nav-bar" class="hidden">
                 <a href="#o-nama">O nama</a>
                 <a href="#meni">Meni</a>
                 <a href="#galerija">Galerija</a>
@@ -168,7 +168,7 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="kontakt">
         <div class="contact-section">
             <div class="contact-info">
                 <h3>Posetite nas</h3>
@@ -198,4 +198,21 @@
     </footer>
 
 </body>
+
+<script>
+
+    const logoButton = document.querySelector('.logo-box');
+    const navBar = document.getElementById('nav-bar')
+
+
+    logoButton.addEventListener('click', (e) => {
+        navBar.classList.toggle('hidden');
+        console.log(navBar);
+    })
+
+    navBar.addEventListener('click', (e) => {
+        navBar.classList.toggle('hidden');
+    })
+
+</script>
 </html>

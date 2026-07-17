@@ -40,7 +40,9 @@
 
         .logo-box img {
             height: 60px;
+            width: auto;
             filter: invert(1) brightness(1.5);
+            transition: height 0.2s ease;
         }
 
         nav a {
@@ -343,9 +345,15 @@
         }
 
         @media (max-width: 768px) {
+
+            .logo-box img {
+                /* Shrinks the logo height so it doesn't dominate a small viewport */
+                height: 40px; 
+            }      
             .header-container {
                 flex-direction: column;
                 gap: 15px;
+                padding: 10px 15px;
             }
             nav a {
                 margin: 0 10px;
@@ -359,5 +367,14 @@
             }
             .contact-section {
                 padding: 30px 20px;
+            }
+            .hidden {
+                display: none !important;
+            }
+            .header-container nav{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px 15px;
             }
         }
